@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess the Number Game</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <!-- Add Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+</head>
+<body>
+
+<div id="loginContainer">
+  <h1>Login</h1>
+  <form id="loginForm" onsubmit="return loginUser()">
+    <input type="email" id="loginEmail" placeholder="Email" required>
+    <input type="password" id="loginPassword" placeholder="Password" required>
+    <button type="submit">Login</button>
+  </form>
+  <p>Forgot your password? <a href="#" onclick="showForgotPassword()">Reset here</a></p>
+  <p>Don't have an account? <a href="#" onclick="showSignup()">Sign up here</a></p>
+</div>
+
+<div id="signupContainer" style="display:none;">
+  <h1>Sign Up</h1>
+  <form id="signupForm" onsubmit="return signupUser()">
+    <input type="email" id="signupEmail" placeholder="Email" required>
+    <input type="password" id="signupPassword" placeholder="Password" required>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+</div>
+
+<div id="forgotPasswordContainer" style="display:none;">
+  <h1>Reset Password</h1>
+  <form id="forgotPasswordForm" onsubmit="return sendPasswordReset()">
+    <input type="email" id="forgotPasswordEmail" placeholder="Email" required>
+    <button type="submit">Send Password Reset Email</button>
+  </form>
+  <p>Remembered your password? <a href="#" onclick="showLogin()">Login here</a></p>
+</div>
+
+<div id="gameContainer" style="display:none;">
+  <h1>Guess the Number</h1>
+  <p>Guess a number between 1 and 100:</p>
+  <input type="number" id="guessInput" min="1" max="100" placeholder="Enter your guess">
+  <button onclick="makeGuess()">Guess</button>
+  <p id="feedback"></p>
+  <button onclick="logoutUser()">Logout</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
